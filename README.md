@@ -47,3 +47,4 @@ It's gRPC server application in which I have configured Spring Boot gRPC framewo
   ```
   gradle :bootrun
   ```
+* Az-Wallet-Client-App [Link](https://github.com/AzharMobeen/Az-wallet-client-app)
