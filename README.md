@@ -25,10 +25,25 @@ It's gRPC server application in which I have configured Spring Boot gRPC framewo
     * I used `threadPoolTaskExecutor.setRejectedExecutionHandler(new RejectedExecutionHandlerImpl());`
     in which rejected thread will be added again to blockingQueue
 * Logging
-* Comments on Class level, Method level and some time in side method for important logic.    
+* Comments on Class level, Method level and some time in side method for important logic.
+* For Testing purpose you can also use [evans CLI](https://github.com/ktr0731/evans#from-github-releases) it's very nice tool to test gRPC server.
+* Some required dummy data will be inserted by spring boot from these files    
+
+    * [schema.sql](https://github.com/AzharMobeen/Az-wallet-server-api/blob/master/src/main/resources/schema.sql)
+    * [data.sql](https://github.com/AzharMobeen/Az-wallet-server-api/blob/master/src/main/resources/schema.sql)
 
 ##### How to Run *[Help](https://spring.io/guides/gs/spring-boot/ "Help")*: #####
+* Please create schema
+ ``` 
+ Drop schema if exists user_wallet_db;
+ Create schema user_wallet_db;
+ ```
 * We can run in different ways: 
-  * Execute this command `gradlew build && java -jar build/libs/wallet-server-0.0.1-SNAPSHOT.jar` from project folder.   
-  * Or you can run `gradle :bootrun` from project folder.
-
+    * From project folder run this command 
+  ```
+  gradlew build && java -jar build/libs/wallet-server-0.0.1-SNAPSHOT.jar   
+  ```
+    * Or you can run
+  ```
+  gradle :bootrun
+  ```
