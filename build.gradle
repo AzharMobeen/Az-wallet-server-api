@@ -16,7 +16,7 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'com.google.protobuf' // plugin required for Protocol Buffer
 apply plugin: 'idea' // for Intellij IDEA
 
-group = 'com.az.wallet.server'
+group = 'com.az.walletserver'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
