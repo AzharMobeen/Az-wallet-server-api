@@ -29,6 +29,7 @@ public class UserWalletService {
     /*
         =>  It will return UserWalletList with respect to userId
     */
+    @Transactional(readOnly = true)
     public List<UserWalletEntity> getUserWalletListByUserId(Integer userId){
         return userWalletRepository.findByUserEntity_UserId(userId);
     }
@@ -36,6 +37,7 @@ public class UserWalletService {
     /*
         =>  It will return UserWallet with respect to userId and currencyCode
     */
+    @Transactional(readOnly = true)
     public Optional<UserWalletEntity> getUserWalletListByUserIdAndCurrencyCode(Integer userId, String currencyCode){
         log.info("Get UserWalletEntity from DB with parameter userId, currencyCode {} {}",userId,currencyCode);
         return userWalletRepository.findByUserEntity_UserIdAndCurrencyCode(userId,currencyCode);

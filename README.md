@@ -17,9 +17,8 @@ It's gRPC server application in which I have configured Spring Boot gRPC framewo
     * protobuf-gradle-plugin:0.8.8
 * JUnit
 
-#### My Important choices: ####
+#### My Important choices For Wallet-Server: ####
 * I'm using Spring Boot 2.x default Connection pooling (Hikari)
-* MySQL DB default value for number of connections is **151** so I make my max connection pool size 151.
 * I have configured ThreadPoolTaskExecutor with respect to my machine
     * My machine: *3rd Generation Intel Core i5-3320M (2.60 GHz, 3MB L3 cache, 35 W, 2 cores)*
     * I used `threadPoolTaskExecutor.setRejectedExecutionHandler(new RejectedExecutionHandlerImpl());`
@@ -30,14 +29,9 @@ It's gRPC server application in which I have configured Spring Boot gRPC framewo
 * Some required dummy data will be inserted by spring boot from these files    
 
     * [schema.sql](https://github.com/AzharMobeen/Az-wallet-server-api/blob/master/src/main/resources/schema.sql)
-    * [data.sql](https://github.com/AzharMobeen/Az-wallet-server-api/blob/master/src/main/resources/schema.sql)
+    * [data.sql](https://github.com/AzharMobeen/Az-wallet-server-api/blob/master/src/main/resources/data.sql)
 
 ##### How to Run *[Help](https://spring.io/guides/gs/spring-boot/ "Help")*: #####
-* Please create schema
- ``` 
- Drop schema if exists user_wallet_db;
- Create schema user_wallet_db;
- ```
 * We can run in different ways: 
     * From project folder run this command 
   ```

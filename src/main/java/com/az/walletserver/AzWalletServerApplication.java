@@ -6,10 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.task.TaskExecutor;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-@EnableAsync
+
 @SpringBootApplication
 public class AzWalletServerApplication {
 
@@ -22,11 +21,10 @@ public class AzWalletServerApplication {
         ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
         threadPoolTaskExecutor.setMaxPoolSize(4);
         threadPoolTaskExecutor.setCorePoolSize(4);
-        threadPoolTaskExecutor.setQueueCapacity(500);
+        threadPoolTaskExecutor.setQueueCapacity(800);
         threadPoolTaskExecutor.setThreadNamePrefix("threadPoolExecutor-");
         threadPoolTaskExecutor.setRejectedExecutionHandler(new RejectedExecutionHandlerImpl());
         threadPoolTaskExecutor.initialize();
         return threadPoolTaskExecutor;
     }
-
 }

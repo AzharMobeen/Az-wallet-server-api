@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 import java.util.*;
 
 
+
 /**
  * @author - Azhar Mobeen
  *
@@ -195,10 +196,15 @@ public class WalletServerGRpcServiceImpl extends WalletServerServiceGrpc.WalletS
             userWalletEntity.setBalance(updatedBalance);
 
             log.info("Withdrawing from User Wallet {}",userWalletEntity);
-            userWalletEntity = userWalletService.saveUserWalletEntity(userWalletEntity);
-            log.info("User Wallet successfully updated! {}",userWalletEntity);
-            responseObserver.onNext(WalletResponse.newBuilder().setResponseStatus(ResponseStatus.WITHDRAW_SUCCESS).setResponseMessage(Status.OK.toString()).build());
-            responseObserver.onCompleted();
+            /*try {*/
+                userWalletEntity = userWalletService.saveUserWalletEntity(userWalletEntity);
+                log.info("User Wallet successfully updated! {}",userWalletEntity);
+                responseObserver.onNext(WalletResponse.newBuilder().setResponseStatus(ResponseStatus.WITHDRAW_SUCCESS).setResponseMessage(Status.OK.toString()).build());
+                responseObserver.onCompleted();
+            /*} catch (ExecutionException | InterruptedException e) {
+                log.error("Exception occurs",e);
+            }*/
+
         }else {
             // This means amount is not valid
             log.info("Requested amount should be <= user wallet balance requestAmount {}, userWalletBalance {} ",requestedAmount,userWalletEntity.getBalance());
@@ -216,10 +222,15 @@ public class WalletServerGRpcServiceImpl extends WalletServerServiceGrpc.WalletS
         BigDecimal updateBalance = userWalletEntity.getBalance().add(amount);
         userWalletEntity.setBalance(updateBalance);
         log.info("Depositing into User Wallet {}",userWalletEntity);
-        userWalletEntity = userWalletService.saveUserWalletEntity(userWalletEntity);
-        log.info("User Wallet successfully updated! {}",userWalletEntity);
-        responseObserver.onNext(WalletResponse.newBuilder().setResponseMessage(Status.OK.toString()).setResponseStatus(ResponseStatus.DEPOSIT_SUCCESS).build());
-        responseObserver.onCompleted();
+        /*try {*/
+            userWalletEntity = userWalletService.saveUserWalletEntity(userWalletEntity);
+            log.info("User Wallet successfully updated! {}",userWalletEntity);
+            responseObserver.onNext(WalletResponse.newBuilder().setResponseMessage(Status.OK.toString()).setResponseStatus(ResponseStatus.DEPOSIT_SUCCESS).build());
+            responseObserver.onCompleted();
+        /*} catch (ExecutionException | InterruptedException e) {
+           log.error("Exception occurs",e);
+        }*/
+
     }
 
 
